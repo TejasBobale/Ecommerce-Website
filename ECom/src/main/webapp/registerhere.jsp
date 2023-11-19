@@ -43,7 +43,7 @@
 						<button type="submit" class="btn btn-secondary">Register</button>
 					</div>
 					<div style="text-decoration: none;font-weight: bold;text-align: center;margin-top: 30px;">
-			            <p>Already have an account. <a href="register.jsp" id="registerLink" style="color: #007bff;">Login</a></p>
+			            <p>Already have an account. <a href="login.jsp" id="registerLink" style="color: #007bff;">Login</a></p>
 			        </div>
 				</form>
 			</div>
