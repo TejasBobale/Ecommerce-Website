@@ -1,9 +1,23 @@
+<%@page import="java.util.*"%>
 <%@ page import="com.EcommerceStore.model.*" %>
+<%@ page import="com.EcommerceStore.dao.*" %>
+<%@ page import="com.EcommerceStore.connection.*" %>
+
 <%
-	User auth = (User) request.getSession().getAttribute("auth");
-	if(auth != null){
-		request.setAttribute("auth", auth);
-	}
+User auth = (User) request.getSession().getAttribute("auth");
+if(auth != null){
+	request.setAttribute("auth", auth);
+}
+
+ArrayList<Cart> cartList = (ArrayList) session.getAttribute("cart-list");
+List<Cart> cartProduct = null;
+
+if(cartList != null){
+	ProductDao pDao = new ProductDao(DBconnection.getConnection());
+	cartProduct = pDao.getCartProducts(cartList);
+	
+	request.setAttribute("cart_list", cartList);
+}
 %>
 
 
@@ -22,7 +36,7 @@
 				<li class="nav-item active"><a class="nav-link" href="index.jsp">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart</a></li>
+				<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart <span class="badge badge-danger">${cart_list.size() }</span></a></li>
 					<%if(auth != null){%>
 						<li class="nav-item"><a class="nav-link disabled" href="orders.jsp">Orders</a>
 						</li>

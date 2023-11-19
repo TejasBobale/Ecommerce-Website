@@ -59,7 +59,7 @@ public class ProductDao {
 						row.setName(rs.getString("name"));
 						row.setCategory(rs.getString("category"));
 						row.setPrice(rs.getDouble("Price") * item.getQuantity());
-						row.setQuantity(rs.getInt(item.getQuantity()));
+						row.setQuantity(item.getQuantity());
 						
 						products.add(row);
 					}
@@ -73,7 +73,28 @@ public class ProductDao {
 	}
 	
 	
-	
+	public double getTotalPrice(ArrayList<Cart> cartList) {
+		double sum = 0;
+		
+		try {
+			if(cartList.size() > 0) {
+				for(Cart item: cartList) {
+					query = "select price from products where id=?";
+					pst = this.connect.prepareStatement(query);
+					pst.setInt(1, item.getId());
+					rs = pst.executeQuery();
+					
+					while(rs.next()) {
+						sum += rs.getDouble("price")*item.getQuantity() ;
+					}
+				}
+			}
+		} catch (Exception e) {
+			
+		}
+		
+		return sum;
+	}
 	
 	
 	

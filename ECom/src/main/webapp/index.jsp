@@ -5,8 +5,17 @@
 	pageEncoding="UTF-8"%>
 
 <%
+HashSet<Integer> setOfProfuctID = new HashSet<>();
 ProductDao pd = new ProductDao(DBconnection.getConnection());
 List<Product> products = pd.getAllProduct();
+
+ArrayList<Cart> cartlist = (ArrayList) session.getAttribute("cart-list");
+if(cartlist != null){
+	
+	for(Cart id : cartlist){
+		setOfProfuctID.add(id.getId());
+	}
+}
 
 %>
 <!DOCTYPE html>
@@ -34,9 +43,18 @@ List<Product> products = pd.getAllProduct();
 							<h5 class="card-title"><%= p.getName() %></h5>
 							<h6 class="price">Price : ₹ <%= p.getPrice() %></h6>
 							<h6 class="category">Category : <%= p.getCategory() %></h6>
-							<div class="mt-2 d-flex justify-content-between">								
-								<a href="AddToCart?id=<%=p.getId() %>" class="btn btn-dark">Add to Cart</a>
-								<a href="#" class="btn btn-warning">Buy Now</a>
+							<div class="mt-2 d-flex justify-content-between">
+								<% 
+									if(setOfProfuctID.contains(p.getId())){ %>	
+									
+										<a href="cart.jsp" class="btn btn-primary">Go to Cart</a>
+										
+								<%	} else{ %>
+										<a href="AddToCart?id=<%=p.getId() %>" class="btn btn-dark">Add to Cart</a>
+								<% 	}
+								%>								
+								
+								<a href="order-now?id=<%= p.getId() %>&quantity=1" class="btn btn-warning">Buy Now</a>
 							</div>
 
 						</div>

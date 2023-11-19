@@ -32,8 +32,8 @@ public class AddToCart extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Cart cartItem = new Cart();
 		cartItem.setId(id);
+		
 		cartItem.setQuantity(1);
-		String exist = "false";
 		
 		
 		HttpSession session = request.getSession();
@@ -43,7 +43,8 @@ public class AddToCart extends HttpServlet {
 		if(existingCartList == null) {
 			cartList.add(cartItem);
 			session.setAttribute("cart-list", cartList);
-			response.sendRedirect("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			rd.include(request, response);
 		}
 		else {
 			cartList = existingCartList;
@@ -53,7 +54,7 @@ public class AddToCart extends HttpServlet {
 				if(c.getId() == id) {
 					itemExist = true;
 					PrintWriter pw = response.getWriter();
-					pw.print("<h3 style='color:crimson; text-align:center'>Item already in the cart.  <a href='cart.jsp'>Go to cart</a></h3>");
+					pw.print("<h3 style='color:crimson; text-align:center'>Item already in the cart. <a href='cart.jsp'>Go to cart</a></h3>");
 					RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 					rd.include(request, response);
 					break;
@@ -62,7 +63,8 @@ public class AddToCart extends HttpServlet {
 
 			if(!itemExist) {
 				cartList.add(cartItem);
-				response.sendRedirect("index.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+				rd.include(request, response);
 			}
 			
 		}

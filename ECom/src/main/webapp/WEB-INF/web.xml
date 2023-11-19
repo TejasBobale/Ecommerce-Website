@@ -39,4 +39,44 @@
     <servlet-name>AddToCart</servlet-name>
     <url-pattern>/add-to-cart</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>QuantitySetter</display-name>
+    <servlet-name>QuantitySetter</servlet-name>
+    <servlet-class>com.EcommerceStore.model.Quantity</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QuantitySetter</servlet-name>
+    <url-pattern>/quantity-inc-dec</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveFromCart</display-name>
+    <servlet-name>RemoveFromCart</servlet-name>
+    <servlet-class>com.EcommerceStore.servlet.RemoveFromCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveFromCart</servlet-name>
+    <url-pattern>/remove-from-cart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OrderNowServlet</display-name>
+    <servlet-name>OrderNowServlet</servlet-name>
+    <servlet-class>com.EcommerceStore.servlet.OrderNowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderNowServlet</servlet-name>
+    <url-pattern>/order-now</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckOutServlet</display-name>
+    <servlet-name>CheckOutServlet</servlet-name>
+    <servlet-class>com.EcommerceStore.servlet.CheckOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckOutServlet</servlet-name>
+    <url-pattern>/check-out</url-pattern>
+  </servlet-mapping>
 </web-app>
