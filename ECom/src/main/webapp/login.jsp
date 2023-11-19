@@ -51,7 +51,7 @@
 	</div>
 </nav>
 	
-	<%@include file = "includes/footer.jsp" %>
+	
 	<div class="container">
 		<div class="card w-50 mx-auto my-5">
 			<div class="card-header text-center">User Login</div>
@@ -73,12 +73,12 @@
 						<button type="submit" class="btn btn-secondary">Login</button>
 					</div>
 					<div style="text-decoration: none;font-weight: bold;text-align: center;margin-top: 30px;">
-			            <p>Don't have an account? <a href="register.jsp" id="registerLink" style="color: #007bff;">Register</a></p>
+			            <p>Don't have an account? <a href="registerhere.jsp" id="registerLink" style="color: #007bff;">Register</a></p>
 			        </div>
 				</form>
 			</div>
 		</div>
 	</div>
-	
+	<%@include file = "includes/footer.jsp" %>
 </body>
 </html>

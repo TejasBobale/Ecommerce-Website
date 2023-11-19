@@ -35,4 +35,22 @@ public class UserDao {
 		}
 		return user;
 	}
+	
+	public boolean userRegister(String name, String email, String password) {
+		boolean result = false;
+		try {
+			query = "insert into user(name, email, password) values(?, ?, ?)";
+			pst = this.connect.prepareStatement(query);
+			pst.setString(1, name);
+			pst.setString(2, email);
+			pst.setString(3, password);
+			
+			pst.executeUpdate();
+			result = true;
+			
+		} catch (Exception e) {
+			
+		}
+		return result;
+	}
 }

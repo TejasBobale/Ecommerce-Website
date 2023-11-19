@@ -41,13 +41,13 @@ if(cartlist != null){
 		<div class="d-flex py-3">
 			<h3>Total price: ₹ ${ (totalPrice>0) ? dcf.format(totalPrice) : 0 }</h3><a href="check-out?price=${ totalPrice }" class="mx-3 btn btn-primary">Check out</a>
 		</div>
-		<table class="table table-light">
-			<thead>
+		<table class="table" style="text-align:center">
+			<thead class="table-secondary">
 				<tr>
 					<th scope="col">Name</th>
 					<th scope="col">Category</th>
 					<th scope="col">Price</th>
-					<th scope="col">Buy Now</th>
+					<th scope="col">Quantity</th>
 					<th scope="col">Cancel</th>
 				</tr>
 			</thead>
@@ -61,11 +61,11 @@ if(cartlist != null){
 						<tr>
 						<td><%= c.getName() %></td>
 						<td><%= c.getCategory() %></td>
-						<td>₹ <%= c.getPrice() %></td>
+						<td>₹ <%= dcf.format(c.getPrice()) %></td>
 						<td>
-							<form action="" method="post" class="form-inline">
+							<form action="" method="post" class="form-inline" >
 								<input type="hidden" name="id" value="<%= c.getId() %>" class="form-input">
-								<div class="form-group d-flex justify-content-between">
+								<div class="form-group d-flex ">
 									<a class="btn btn-sm btn-decre" href="QantitySetter?action=dec&id=<%= c.getId()%>"> <i class="fas fa-minus-square"></i> </a>
 									<input type="number" name="quantity" class="form-control" value="<%= c.getQuantity() %>" readonly> 
 									<a class="btn btn-sm btn-incre" href="QantitySetter?action=inc&id=<%= c.getId()%>"> <i class="fas fa-plus-square"></i> </a>

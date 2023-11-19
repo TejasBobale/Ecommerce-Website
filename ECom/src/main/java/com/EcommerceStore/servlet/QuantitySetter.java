@@ -52,7 +52,7 @@ public class QuantitySetter extends HttpServlet {
 		}
 		else {
 			PrintWriter pw = response.getWriter();
-			pw.print("<h3 style='color:crimson; text-align:center'>Else</h3>");
+			pw.print("<h3 style='color:crimson; text-align:center'>Error</h3>");
 			RequestDispatcher rd = request.getRequestDispatcher("/cart.jsp");
 			rd.include(request, response);
 		}
